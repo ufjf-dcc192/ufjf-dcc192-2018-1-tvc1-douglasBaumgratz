@@ -13,11 +13,9 @@ public class Evento {
 
     Integer numSemanas;
     String nome;
-    Integer limitePessoas;
-    Integer inscritos;
+    Integer limitePessoas;    
 
-    public Evento(Integer numSemanas, String nome, Integer limite) {
-        inscritos=0;
+    public Evento(Integer numSemanas, String nome, Integer limite) {        
         this.numSemanas = numSemanas;
         this.nome = nome;
         this.limitePessoas = limite;
@@ -29,14 +27,6 @@ public class Evento {
 
     public void setLimitePessoas(Integer limitePessoas) {
         this.limitePessoas = limitePessoas;
-    }
-
-    public Integer getInscritos() {
-        return inscritos;
-    }
-
-    public void setInscritos(Integer inscritos) {
-        this.inscritos = inscritos;
     }
 
     
@@ -67,9 +57,6 @@ public class Evento {
     public void decrementarLimite() {
         this.limitePessoas = this.limitePessoas--;
     }
-
-    public void incrementaInscritos() {
-        this.inscritos = this.inscritos++;
-    }
+ 
 
 }

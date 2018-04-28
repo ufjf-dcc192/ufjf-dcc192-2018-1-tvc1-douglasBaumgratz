@@ -55,14 +55,13 @@ public class ServletControle extends HttpServlet {
             String tipo = request.getParameter("tipo");
             Integer tempo = Integer.parseInt(request.getParameter("tempo"));
             
-            //verifica se o evento desejado ja se encontra cadastrado e decrementa limite de pessoas
+            //verifica se o evento desejado ja se encontra cadastrado e decrementa limite de pessoas            
             for (int i = 0; i < listaEventos.size(); i++) {
                 if (listaEventos.get(i).getNome() == nomeEvento) {  
-                    listaEventos.get(i).decrementarLimite();      
-                    listaEventos.get(i).incrementaInscritos();   
+                    listaEventos.get(i).decrementarLimite();                          
                 }
             }
-
+            
             //adiciona a lista de inscritos a pessoa
             listaInscritos.add(new Pessoa(tipo, nomeInscrito, tempo));
             request.setAttribute("evento", listaEventos);

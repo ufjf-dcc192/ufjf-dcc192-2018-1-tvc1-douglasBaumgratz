@@ -22,7 +22,8 @@
             <th>Tipo</th>
             <th>Tempo de estadia</th>                    
             <tr>                    
-                <%                    
+                <%
+                    int i=0;
                     for (Pessoa pessoa : (List<Pessoa>) request.getAttribute("inscritos")) {
                 %>   
                 <td><%=pessoa.getNome()%></td>
@@ -30,9 +31,14 @@
                 <td><%=pessoa.getTempo()%></td>                                                                                                                
             </tr>
             <%
+                i++;
                 }
-            %>            
+            %>   
+            <tr>
+                <td>Numero de pessoas cadastradas:</td>
+                <td colspan="2"><%=i%></td>
+            </tr>
         </table>
-          <a href="ServletControle.html">Voltar</a>       
+        <a href="ServletControle.html">Voltar</a>       
     </body>
 </html>

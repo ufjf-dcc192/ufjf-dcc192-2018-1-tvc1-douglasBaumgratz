@@ -11,10 +11,10 @@ public class ListaInscritos {
 
         if (listaInscritos == null) {
             listaInscritos = new ArrayList<>();
-            listaInscritos.add(new Pessoa("intercambio", "João",2));
-            listaInscritos.add(new Pessoa("intercambio", "Silveirinha",2));
-            listaInscritos.add(new Pessoa("anfritrião", "Beatriz",2));
-            listaInscritos.add(new Pessoa("intercambio", "Maria",2));
+            listaInscritos.add(new Pessoa("intercambio", "João",2,"Evento A"));
+            listaInscritos.add(new Pessoa("intercambio", "Silveirinha",2,"Evento W"));
+            listaInscritos.add(new Pessoa("anfritrião", "Beatriz",2,"Evento A"));
+            listaInscritos.add(new Pessoa("intercambio", "Maria",2,"Evento A"));
 
         }
         return listaInscritos;

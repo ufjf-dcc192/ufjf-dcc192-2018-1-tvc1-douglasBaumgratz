@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ice
  */
-@WebServlet(urlPatterns = {"/ServletControle.html", "/Eventos.html", "/SolicitarHospedagem.html","/Inscritos.html"})
+@WebServlet(urlPatterns = {"/ServletControle.html", "/Eventos.html", "/SolicitarHospedagem.html", "/Inscritos.html"})
 public class ServletControle extends HttpServlet {
 
     private RequestDispatcher despachante;
@@ -38,7 +38,7 @@ public class ServletControle extends HttpServlet {
             despachante.forward(request, response);
         } else if ("/SolicitarHospedagem.html".equals(request.getServletPath())) {
             despachante = request.getRequestDispatcher("WEB-INF/jsp/SolicitarHospedagem.jsp");
-            despachante.forward(request, response);       
+            despachante.forward(request, response);
         } else if ("/Inscritos.html".equals(request.getServletPath())) {
             request.setAttribute("inscritos", listaInscritos);
             despachante = request.getRequestDispatcher("WEB-INF/jsp/Inscritos.jsp");
@@ -54,16 +54,19 @@ public class ServletControle extends HttpServlet {
             String nomeInscrito = request.getParameter("nomeInscrito");
             String tipo = request.getParameter("tipo");
             Integer tempo = Integer.parseInt(request.getParameter("tempo"));
-            
+            int a = 0;
             //verifica se o evento desejado ja se encontra cadastrado e decrementa limite de pessoas            
             for (int i = 0; i < listaEventos.size(); i++) {
-                if (listaEventos.get(i).getNome() == nomeEvento) {  
-                    listaEventos.get(i).decrementarLimite();                          
+                if (listaEventos.get(i).getNome() == nomeEvento) {
+                    listaEventos.get(i).decrementarLimite();
+                    a = i;
                 }
             }
-            
+
             //adiciona a lista de inscritos a pessoa
-            listaInscritos.add(new Pessoa(tipo, nomeInscrito, tempo));
+            Pessoa pessoa = new Pessoa(tipo, nomeInscrito, tempo);
+            pessoa.setEvento(listaEventos.get(a).nome);
+            listaInscritos.add(pessoa);
             request.setAttribute("evento", listaEventos);
             //request.setAttribute("produto", pedidos.get(id).getLista());
         }

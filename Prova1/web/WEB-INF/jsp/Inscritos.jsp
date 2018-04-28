@@ -21,6 +21,7 @@
             <th>Nome</th>
             <th>Tipo</th>
             <th>Tempo de estadia</th>                    
+            <th>Evento</th>                    
             <tr>                    
                 <%
                     int i=0;
@@ -29,6 +30,7 @@
                 <td><%=pessoa.getNome()%></td>
                 <td><%=pessoa.getTipo()%></td>
                 <td><%=pessoa.getTempo()%></td>                                                                                                                
+                <td><%=pessoa.getEvento()%></td>                                                                                                                
             </tr>
             <%
                 i++;

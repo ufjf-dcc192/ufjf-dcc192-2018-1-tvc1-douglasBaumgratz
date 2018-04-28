@@ -13,11 +13,30 @@ public class Pessoa {
     String tipo;
     String nome;
     Integer tempo; //em semanas
+    String evento;
 
     public Pessoa(String tipo, String nome, Integer tempo) {
         this.tipo = tipo;
         this.nome = nome;
         this.tempo = tempo;
+        
+    }
+
+    public Pessoa(String tipo, String nome, Integer tempo, String evento) {
+        this.tipo = tipo;
+        this.nome = nome;
+        this.tempo = tempo;
+        this.evento = evento;
+    }
+    
+    
+
+    public String getEvento() {
+        return evento;
+    }
+
+    public void setEvento(String evento) {
+        this.evento = evento;
     }
 
     public Integer getTempo() {

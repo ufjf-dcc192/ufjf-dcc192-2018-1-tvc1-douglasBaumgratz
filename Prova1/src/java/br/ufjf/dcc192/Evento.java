@@ -10,26 +10,25 @@ package br.ufjf.dcc192;
  * @author ice
  */
 public class Evento {
-    
-    Integer numSemanas;    
+
+    Integer numSemanas;
     String nome;
-    Integer limite;
+    Integer limitePessoas;
 
     public Evento(Integer numSemanas, String nome, Integer limite) {
         this.numSemanas = numSemanas;
         this.nome = nome;
-        this.limite = limite;
+        this.limitePessoas = limite;
     }
 
     public Integer getLimite() {
-        return limite;
+        return limitePessoas;
     }
 
     public void setLimite(Integer limite) {
-        this.limite = limite;
+        this.limitePessoas = limite;
     }
 
-    
     public String getNome() {
         return nome;
     }
@@ -38,7 +37,6 @@ public class Evento {
         this.nome = nome;
     }
 
-    
     public Integer getNumSemanas() {
         return numSemanas;
     }
@@ -46,7 +44,9 @@ public class Evento {
     public void setNumSemanas(Integer numSemanas) {
         this.numSemanas = numSemanas;
     }
-    
-    
-    
+
+    public void decrementarLimite() {
+        this.limitePessoas = this.limitePessoas--;
+    }
+
 }

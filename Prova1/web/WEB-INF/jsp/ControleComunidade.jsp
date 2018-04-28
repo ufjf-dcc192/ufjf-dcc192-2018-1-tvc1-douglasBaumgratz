@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>MENU!</h1>
+        <h1>MENU</h1>
 
         <a href="Eventos.html">Visualizar Eventos Disponíveis</a><br>        
         <a href="Inscritos.html">Visualizar Inscritos</a><br>   

@@ -14,8 +14,10 @@
     <body>
         <h1>MENU!</h1>
 
-       <a href="Eventos.html">Visualizar Eventos Disponíveis</a><br>        
-       <a href="SolicitarHospedagem.html">Solicitar Hospedagem</a>        
-       
+        <a href="Eventos.html">Visualizar Eventos Disponíveis</a><br>        
+        <a href="Inscritos.html">Visualizar Inscritos</a><br>   
+        <a href="SolicitarHospedagem.html">Solicitar Hospedagem</a>        
+
+
     </body>
 </html>

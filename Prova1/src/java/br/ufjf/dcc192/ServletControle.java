@@ -19,11 +19,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ice
  */
-@WebServlet(urlPatterns = {"/ServletControle.html", "/Eventos.html", "/SolicitarHospedagem.html"})
+@WebServlet(urlPatterns = {"/ServletControle.html", "/Eventos.html", "/SolicitarHospedagem.html","/Inscritos.html"})
 public class ServletControle extends HttpServlet {
 
     private RequestDispatcher despachante;
-    List<Evento> evento = new ListaEventos().getInstance();
+    List<Evento> listaEventos = new ListaEventos().getInstance();
     List<Pessoa> listaInscritos = new ListaInscritos().getInstance();
 
     @Override
@@ -33,11 +33,15 @@ public class ServletControle extends HttpServlet {
             despachante = request.getRequestDispatcher("WEB-INF/jsp/ControleComunidade.jsp");
             despachante.forward(request, response);
         } else if ("/Eventos.html".equals(request.getServletPath())) {
-            request.setAttribute("evento", evento);
+            request.setAttribute("evento", listaEventos);
             despachante = request.getRequestDispatcher("WEB-INF/jsp/Eventos.jsp");
             despachante.forward(request, response);
         } else if ("/SolicitarHospedagem.html".equals(request.getServletPath())) {
             despachante = request.getRequestDispatcher("WEB-INF/jsp/SolicitarHospedagem.jsp");
+            despachante.forward(request, response);       
+        } else if ("/Inscritos.html".equals(request.getServletPath())) {
+            request.setAttribute("inscritos", listaInscritos);
+            despachante = request.getRequestDispatcher("WEB-INF/jsp/Inscritos.jsp");
             despachante.forward(request, response);
         }
 
@@ -50,15 +54,18 @@ public class ServletControle extends HttpServlet {
             String nomeInscrito = request.getParameter("nomeInscrito");
             String tipo = request.getParameter("tipo");
             Integer tempo = Integer.parseInt(request.getParameter("tempo"));
-
-            for (int i = 0; i < evento.size(); i++) {
-                if (evento.get(i).getNome() == nomeEvento) {
-                    evento.get(i).decrementarLimite();      //decrementa 1 no limite de pessoas no evento
+            
+            //verifica se o evento desejado ja se encontra cadastrado e decrementa limite de pessoas
+            for (int i = 0; i < listaEventos.size(); i++) {
+                if (listaEventos.get(i).getNome() == nomeEvento) {  
+                    listaEventos.get(i).decrementarLimite();      
+                    listaEventos.get(i).incrementaInscritos();   
                 }
             }
 
+            //adiciona a lista de inscritos a pessoa
             listaInscritos.add(new Pessoa(tipo, nomeInscrito, tempo));
-            request.setAttribute("evento", evento);
+            request.setAttribute("evento", listaEventos);
             //request.setAttribute("produto", pedidos.get(id).getLista());
         }
         response.sendRedirect("ServletControle.html");

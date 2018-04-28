@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="br.ufjf.dcc192.Evento"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,6 +29,7 @@
             <button type="submit" >Salvar</button>
             <button type="reset" >Limpar</button>
         </form>        
+
         <a href="ServletControle.html">Voltar</a>   
     </body>
 </html>
